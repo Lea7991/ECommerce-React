@@ -11,6 +11,7 @@ const Book = ( {book} ) => {
     const mountedRef = useRef(true); 
 
     useEffect(() => {
+        mountedRef.current = true;
         const image = new Image();
         image.src = book.url;
         image.onload = () => {
@@ -50,13 +51,15 @@ const Book = ( {book} ) => {
                 </div>
                 </>
                 ) : (
-                    <></>
+                    <>
+                        <div className="book__img--skeleton"></div>
+                        <div className="book__title--skeleton"></div>
+                        <div className="book__rating--skeleton"></div>
+                        <div className="book__price--skeleton"></div>
+                    </>
                 )
             } 
-            <div className="book__img--skeleton"></div>
-            <div className="book__title--skeleton"></div>
-            <div className="book__rating--skeleton"></div>
-            <div className="book__price--skeleton"></div>
+           
         </div>
     )
 }
